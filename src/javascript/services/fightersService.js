@@ -26,9 +26,6 @@ class FighterService {
     } catch (error) {
       throw error
     }
-
-
-
   }
 }
 

@@ -6,9 +6,26 @@ export function createFighterPreview(fighter, position) {
     tagName: 'div',
     className: `fighter-preview___root ${positionClassName}`,
   });
-  const fighterimage = createFighterImage(fighter)
-  fighterElement.append(fighterimage)
   // todo: show fighter info (image, name, health, etc.)
+  if(fighter){
+    const character = createElement({
+      tagName:"div",
+      attributes:{style:"color:white;"}
+    })
+    for(const [key,value] of Object.entries(fighter)){
+      const span = createElement({
+        tagName:'span'
+      })
+      const arr = ['name', 'health','attack', 'defense' ]
+      if(arr.includes(key)){
+        span.innerText = `${key} : ${value} \n`
+        character.append(span)
+      }
+
+    }
+    const fighterImage = createFighterImage(fighter)
+    fighterElement.append(fighterImage,character)
+  }
 
   return fighterElement;
 }
